@@ -1,38 +1,38 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
-const path = require('path');
-const { InjectManifest } = require('workbox-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WebpackPwaManifest = require("webpack-pwa-manifest");
+const path = require("path");
+const { InjectManifest } = require("workbox-webpack-plugin");
 
 module.exports = () => {
   return {
-    mode: 'development',
+    mode: "development",
     entry: {
-      main: './src/js/index.js',
-      install: './src/js/install.js'
+      main: "./src/js/index.js",
+      install: "./src/js/install.js",
     },
     output: {
-      filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      filename: "[name].bundle.js",
+      path: path.resolve(__dirname, "dist"),
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "Jate Text Editor"
+        title: "Jate Text Editor",
       }),
 
       new InjectManifest({
         swSrc: "./src-sw.js",
-        swDest: "src-sw.js"
+        swDest: "src-sw.js",
       }),
-      
+
       new WebpackPwaManifest({
         fingerprint: false,
         inject: true,
         name: "Jate Text Editor",
-        short_name: 'Jate',
+        short_name: "Jate",
         description: "Edits various forms of text",
-        background_color: "34ebde",
-        theme_color: "34ebde",
+        background_color: "#21ccc0",
+        theme_color: "#21ccc0",
         start_url: "./",
         publicPath: "./",
         icons: [
